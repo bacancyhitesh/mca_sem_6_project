@@ -14,3 +14,25 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require bootstrap
+//= require jquery.tokeninput
+//= require jquery.turbolinks
+
+
+// pratik
+$(function() {
+  $("#experience_skills").tokenInput("/skills.json", {
+    crossDomain: false,
+    prePopulate: $("#experience_skills").data("pre"),
+    theme: "facebook"
+  });
+});
+
+// ketan
+$(function() {
+  $("#job_user_skills").tokenInput("/skills.json", {
+    crossDomain: false,
+    prePopulate: $("#job_user_skills").data("pre"),
+    theme: "facebook"
+  });
+});

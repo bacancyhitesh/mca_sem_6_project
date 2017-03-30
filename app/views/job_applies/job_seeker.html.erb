@@ -1,0 +1,67 @@
+<!--Ketan  -->
+<html>
+ <body>
+    <h2>User Details</h2>
+
+    <div class="row">
+      <div class="col-sm-8" style="background-color:lavender;">
+        <h5>User name : <%=@job_user.name%></h5>
+      </div>
+      <div class="col-sm-8" style="background-color:lavender;">
+        <h5>Email : <%=@job_user.email%></h5>
+      </div>
+      <div class="col-sm-8" style="background-color:lavender;">
+        <h5>Contact NO: : <%=@job_user.contactnumber%></h5>
+      </div>
+      <div class="col-sm-8" style="background-color:lavender;">
+        <h5>Marital Status : <%=@job_user.marital_status%></h5>
+      </div>
+    </div>
+
+
+    <h2>Education </h2>
+    <% @education_details.each do |education_detail|%>
+    <h2></h2>
+    <div class="row">
+      <div class="col-sm-8" style="background-color:lavender;">
+        <h5> Qualification: <%=education_detail.qualification%></h5>
+      </div>
+      <div class="col-sm-8" style="background-color:lavender;">
+        <h5>Course: <%=education_detail.course%></h5>
+      </div>
+      <div class="col-sm-8" style="background-color:lavender;">
+        <h5>Specialization: <%=education_detail.specialization%></h5>
+      </div>
+      <div class="col-sm-8" style="background-color:lavender;">
+        <h5>Course_type: <%=education_detail.course_type%></h5>
+      </div>
+      <div class="col-sm-8" style="background-color:lavender;">
+        <h5>passing Year: <%=education_detail.passing_year%></h5>
+      </div>
+    </div>
+    <%end%>
+    <h2>Experience </h2>
+    <%if @experiences.count <1 %>
+      <h4>No Experience</h4>
+      <%else%>
+    <% @experiences.each do |experience|%>
+    <h2></h2>
+    <div class="row">
+      <div class="col-sm-8" style="background-color:lavender;">
+        <h5> Designation: <%=experience.designation%></h5>
+      </div>
+      <div class="col-sm-8" style="background-color:lavender;">
+        <h5>Company: <%=experience.company%></h5>
+      </div>
+      <div class="col-sm-8" style="background-color:lavender;">
+        <h5>Experience: <%=experience.working_since_year%></h5>
+      </div>
+      <div class="col-sm-8" style="background-color:lavender;">
+        <h5>Location: <%=experience.location%></h5>
+      </div>
+    </div>
+    <%end%>
+    <%end%>
+
+  </body>
+</html>

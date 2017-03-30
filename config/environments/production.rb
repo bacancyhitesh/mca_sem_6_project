@@ -33,6 +33,7 @@ Rails.application.configure do
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
+  # SMTP settings for gmail
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
@@ -49,14 +50,17 @@ Rails.application.configure do
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
 
+  
+
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "test_app_#{Rails.env}"
-  config.action_mailer.perform_caching = false
-
+  # config.active_job.queue_name_prefix = "onejobstreet_#{Rails.env}"
+  #config.action_mailer.perform_caching = false
+  #config.action_mailer.delivery_method = :smtp
+# SMTP settings for gmail
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
