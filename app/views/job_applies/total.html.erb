@@ -1,0 +1,39 @@
+<!-- Ketan -->
+<%if @job_users1.count>0%>
+      <center><h3>Total Jobseekers: <%=@job_users1.count%></h3></center>
+      <br>
+      <table class="table table-striped">
+        <tr align="center">
+          <th>Name:</th>
+          <th>Qualification</th>
+          <th>Specialization</th>
+          <th>Course</th>
+          <th>College</th>
+          <th>experiences</th>
+          <th><center>Resume</center></th>
+          <th>Action</th>
+        </tr>
+        <%@job_users1.each do |job_user|%>
+          <tr>
+            <td><%=job_user.name%></td>
+            <td><%=job_user.education_details.first.qualification%></td>
+            <td><%=job_user.education_details.first.specialization%></td>
+            <td><%=job_user.education_details.first.course_type%></td>
+            <td><%=job_user.education_details.first.college%></td>
+            <td><%=job_user.hasexp? ? job_user.experiences.first.working_since_year : "No Experience" %></td>
+            <% if job_user.resume?%>
+              <td><%=link_to "Download", job_user.resume.url, download: job_user.name,class: "btn btn-sm btn-default"%></td>
+              <!-- <td><%=link_to "Download",download_file_path(jobid: params[:jobid], user: job_user.id), download: job_user.name,class: "btn btn-sm btn-default"%></td> -->
+            <%else%>
+              <td><%= "No Resume Uploaded"%></td>
+            <%end%>
+            <td><%=link_to "Show",job_seeker_path(user: job_user.id, jobid: params[:jobid]), class: "glyphicon glyphicon-search btn btn-sm btn-primary"%>
+                <%=link_to "Reject",rejected_path(user: job_user.id, jobid: params[:jobid]), class: "glyphicon glyphicon-trash btn btn-sm btn-danger"%>
+            </td>
+          </tr>
+        <%end%>
+      </table>
+  <%else%>
+  <center><h3>No Apply for this job</h3></center>
+  <center><h3><%= link_to "Back to Job List",jobs_path%></h3></center>
+<%end%>

@@ -1,0 +1,70 @@
+<!-- Ketan -->
+<div class="row">
+  <div class="col-sm-8" style="background-color:lavender;">
+    <h5>Company name : <%=@job.company.name%></h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-8" style="background-color:lavender;">
+    <h5>Job Type : <%=@job.job_type.name%></h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-8" style="background-color:lavender;">
+    <h5>Role : <%=@job.role.name%></h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-8" style="background-color:lavender;">
+    <h5>Vacancy : <%=@job.vacancy%></h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-8" style="background-color:lavender;">
+    <h5>Description : <%=@job.description%></h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-8" style="background-color:lavender;">
+    <h5>Salary : <%=@job.salary%></h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-8" style="background-color:lavender;">
+    <h5><address>Address : <%=@job.address%></address></h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-8" style="background-color:lavender;">
+    <h5>Experience : <%=@job.experience%></h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-8" style="background-color:lavender;">
+    <h5>Start Date : <%=@job.start_date%></h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-8" style="background-color:lavender;">
+    <h5>End Date : <%=@job.end_date%></h5>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-8" style="background-color:lavender;">
+
+    <h5>Qualification : <%=@job.education.qualification%></h5>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-8" style="background-color:lavender;">
+    <h5>Status : <%=@job.status%></h5>
+  </div>
+</div>
+
+<%if current_user %>
+<p><br>
+    <%= link_to "<button class='btn btn-success'>Apply</button>".html_safe, new_job_apply_path(jobid: @job.id)%></div>
+</p>
+<%end%>

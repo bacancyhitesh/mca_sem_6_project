@@ -1,0 +1,39 @@
+<!-- Ketan -->
+<html>
+  <head>
+    <link rel="stylesheet" href="vendor/assets/stylesheets/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="vendor/assets/stylesheets/bootstrap-theme.min.css" crossorigin="anonymous">
+    <script src="vendor/assets/javascripts/jquery.min.js"></script>
+    <script src="vendor/assets/javascripts/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $("#myTab li:eq(0) a").tab('show');
+    });
+    </script>
+  </head>
+  <body>
+    <center><h3>Require <%=@job.role.name %> : Manage Jobseeker<h3></center>
+    <div class="bs-example">
+      <ul class="nav nav-tabs" id="myTab">
+        <li><a data-toggle="tab" href="#unread">Unread/New</a></li>
+        <li><a data-toggle="tab" href="#read">Read</a></li>
+        <li><a data-toggle="tab" href="#reject">Rejected</a></li>
+        <li><a data-toggle="tab" href="#shortlist">Shorlisted</a></li>
+      </ul>
+      <div class="tab-content">
+        <div id="unread" class="tab-pane fade in active">
+          <%= render template: "job_applies/new_applies"%>
+        </div>
+        <div id="read" class="tab-pane fade">
+        <%= render template: "job_applies/total"%>
+        </div>
+        <div id="reject" class="tab-pane fade">
+        <%= render template: "job_applies/rejected"%>
+        </div>
+        <div id="shorlist" class="tab-pane fade">
+        <%= render template: "job_applies/rejected"%>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

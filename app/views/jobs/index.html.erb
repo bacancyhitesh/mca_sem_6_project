@@ -1,0 +1,48 @@
+<!-- Riddhi -->
+<html>
+  <body>
+    <center><h3>Total Posted Job </h3></center>
+    <table class="table table-striped">
+      <tr>
+        <th><center>Posted Date</center></th>
+        <th><center>Company</center></th>
+        <th><center>Job Type</center></th>
+        <th><center>Role</center></th>
+        <th><center>Vacancy</center></th>
+        <th><center>Description</center></th>
+        <th><center>Salary</center></th>
+        <th><center>Start Date</center></th>
+        <th><center>End Date</center></th>
+        <th><center>Status</center></th>
+        <th><center>Action</center></th>
+      </tr>
+      <%@jobs.each do |job|%>
+
+      <!--Ketan  -->
+      <tr align="center">
+        <td><%=job.created_at.strftime("%Y-%m-%d")%></td>
+          <td>
+          <ul><%=job.company.name%></ul>
+          <ul><span class="blue"><%=job.job_applies.where(seen: false).count%></span><font color="blue">New Applies</font></ul>
+          <ul><font color="#0645AD"><%=job.job_applies.where(rejected: false).count%></font><%=link_to 'Total Applied',job_applies_path(jobid: job.id),{ :class => "css_class" }%></ul>
+        </td>
+        <!--Ketan  -->
+        <td><%=job.job_type.name%></td>
+        <td><%=job.role.name%></td>
+        <td><%=job.vacancy%></td>
+        <td><%=job.description%></td>
+        <td><%=job.salary%></td>
+        <td><%=job.start_date%></td>
+        <td><%=job.end_date%></td>
+        <td><%=job.status%></td>
+        <td>
+          <ul><%= link_to "Show",job %></ul>
+          <ul><%= link_to "Edit", edit_job_path(job) %></ul>
+      		<ul><%= link_to "Delete",job,method: :delete, data:{confirm: "Are you sure to delete?"} %></ul>
+        </td>
+      </tr>
+      <%end%>
+    </table>
+    <%=link_to "Add Job Post" , new_job_path %>
+  </body>
+</html>

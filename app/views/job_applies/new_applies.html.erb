@@ -1,0 +1,31 @@
+<%if @job_users.count>0%>
+
+    <center><h3>Total Jobseekers: <%=@job_users.count%></h3></center>
+    <br>
+    <table class="table table-striped">
+      <tr align="center">
+        <th>Name:</th>
+        <th>Qualification</th>
+        <th>Specialization</th>
+        <th>Course</th>
+        <th>College</th>
+        <th>experiences</th>
+        <th>Action</th>
+
+      </tr>
+      <%@job_users.each do |job_user|%>
+        <tr>
+          <td><%=job_user.name%></td>
+          <td><%=job_user.education_details.first.qualification%></td>
+          <td><%=job_user.education_details.first.specialization%></td>
+          <td><%=job_user.education_details.first.course_type%></td>
+          <td><%=job_user.education_details.first.college%></td>
+          <td><%=job_user.hasexp? ? job_user.experiences.first.working_since_year : "No Experience" %></td>
+          <td><%=link_to "Show",job_seeker_path(user: job_user.id, jobid: params[:jobid])%></td>
+        </tr>
+      <%end%>
+    </table>
+<%else%>
+<center><h3>No New apply for this job</h3></center>
+<center><h3><%= link_to "Back to Job List",jobs_path%></h3></center>
+<%end%>

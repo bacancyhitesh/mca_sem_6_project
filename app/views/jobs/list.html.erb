@@ -1,0 +1,49 @@
+<!-- Ankita -->
+
+<h1> List of All Jobs </h1>
+<%=form_tag alljob_path, :method => 'get' do %>
+  <p>
+    <%= select_tag "city_id", options_from_collection_for_select(City.all, "id", "name",params[:city_id]) %>
+      <%= select_tag "indu_id", options_from_collection_for_select(IndustryType.all, "id", "name",params[:indu_id]) %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+<%= paginate @page%>
+<%@jobs.each do |job|%>
+<%= link_to job do %>
+<div class="row">
+  <div class="col-sm-8" style="background-color:white;">
+    <div class="panel panel-default">
+      <div class="panel-heading"><%=job.role.name%></div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-8" style="background-color:lavender;">
+            company name : <%=job.company.name%>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4" style="background-color:lavender;">
+            <span class="glyphicon glyphicon-briefcase"></span>
+              Experience : <%=job.experience%> years +
+          </div>
+          <div class="col-sm-4" style="background-color:lavender;">
+          location : <%= City.find(Company.find(job.company_id).city_id).id %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8" style="background-color:lavender;">
+           Skills Needs : &nbsp;&nbsp;&nbsp;
+           <%job.skills.each do |skill| %>
+              ' <%= skill.name %> ' &nbsp;&nbsp;&nbsp;
+           <%end%>
+           </div>
+        </div>
+      </div>
+
+      <div class="panel-footer"> salary : <%=job.salary%> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Posted By :<%= Employer.find(Company.find(job.company_id).employer_id).first_name %>
+      </div>
+    </div>
+  </div>
+</div>
+<%end%>
+<%end%>

@@ -1,0 +1,33 @@
+<style>
+h1 {
+    font-size: 500%;
+}
+
+h2 {
+    font-size: 200%;
+}
+
+p {
+    font-size: 100%;
+}
+
+</style>
+
+<div class="container">
+	<div class="row">
+		<br><h1 align="center">Welcome to OneJobStreet</h1><br>
+    </div>
+    <div id="custom-search-input">
+      <div class="input-group col-md-12">
+        <input type="text" class="  search-query form-control" placeholder="Search" />
+          <span class="input-group-btn">
+            <button class="btn btn-danger" type="button">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>
+      </div>
+    </div>
+    <h2 align="center"><%=link_to "JobSeeker",new_user_session_path %> |
+    <%=link_to "Recruiters",new_employer_session_path %></h2>
+  </div>
+</div>
